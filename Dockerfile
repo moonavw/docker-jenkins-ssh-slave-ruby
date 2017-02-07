@@ -113,3 +113,13 @@ RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
 
 CMD ["irb"]
+
+# set above env for bash login
+RUN echo "\
+export GEM_HOME=$GEM_HOME \n\
+export BUNDLE_PATH=$BUNDLE_PATH \n\
+export BUNDLE_BIN=$BUNDLE_BIN \n\
+export BUNDLE_SILENCE_ROOT_WARNING=$BUNDLE_SILENCE_ROOT_WARNING \n\
+export BUNDLE_APP_CONFIG=$BUNDLE_APP_CONFIG \n\
+export PATH=$PATH \n\
+    " >> /etc/profile
